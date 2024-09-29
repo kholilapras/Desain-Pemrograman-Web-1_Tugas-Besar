@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Corrected rule for category pages
+    RewriteRule ^([a-zA-Z0-9_-]+)$ page.php?page=$1 [L]
+
+    # Corrected rule for detail pages
+    RewriteRule ^detail/([^/]+)/?$ page.php?page=detail&id=$1 [L]
+</IfModule>

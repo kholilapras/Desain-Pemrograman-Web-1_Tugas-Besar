@@ -1,0 +1,70 @@
+/* CSS Manual */
+
+button {
+    font-size: 1rem;
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.css_form {
+    margin: 0 auto;
+    width: 90%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 0px var(--white);
+    background-color: var(--black);
+
+}
+
+.news-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input,
+.form-textarea,
+.form-select,
+.form-file,
+.form-button {
+    background-color: var(--black2);
+    color: var(--white);
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+.form-file:focus {
+    box-shadow: 0 0 2px var(--white);
+}
+
+.form-button {
+    background-color: var(--blue_dark);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: var(--blue_light);
+}
+
+textarea {
+    height: 500px;
+}
+
+button {
+    color: var(--white);
+}
