@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['email'] = $email;
                     $_SESSION['role'] = $role;
 
-                    header("Location: page.php?page=transaksi");
+                    header("Location: page.php?page=beranda");
                     exit();
                 } else {
                     // Jika password salah

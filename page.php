@@ -1,31 +1,16 @@
-<?php
-include "config/koneksi.php";
+<?php include "load_info.php";
 
-$sql = "SELECT * FROM info_web";
-$result = $koneksi->query($sql);
+$page_map = [
+    'beranda' => 'page/beranda.php',
+    'menu'    => 'page/menu.php',
+    'kontak'  => 'page/kontak.php',
+    'tentang' => 'page/tentang.php'
+];
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $id_info = $row['id_info'];
-    $nama_website = $row['nama_website'];
-    $whatsapp = $row['whatsapp'];
-    $whatsapp_link = $row['whatsapp_link'];
-    $facebook = $row['facebook'];
-    $instagram = $row['instagram'];
-    $alamat = $row['alamat'];
-    $gmaps = $row['gmaps'];
-    $gofood = $row['gofood'];
-    $shopeefood = $row['shopeefood'];
-    $grabfood = $row['grabfood'];
-    $sejarah = $row['sejarah'];
-}
+$page = $_GET['page'] ?? 'beranda';
 
-if ($_GET['page'] == 'beranda') {
-    include "page/beranda.php";
-} else if ($_GET['page'] == 'menu') {
-    include "page/menu.php";
-} else if ($_GET['page'] == 'kontak') {
-    include "page/kontak.php";
-} else if ($_GET['page'] == 'tentang') {
-    include "page/tentang.php";
+if (array_key_exists($page, $page_map)) {
+    include $page_map[$page];
+} else {
+    include 'page/beranda.php';
 }

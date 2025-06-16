@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Login</title>
 </head>
 
 <body>
     <div class="css_loginregister">
-        <form method="post" action="action.php?action=login" enctype="multipart/form-data" class="news-form" autocomplete="off">
+        <form method="post" action="action.php?action=login" enctype="multipart/form-data" class="news-form"
+            autocomplete="off">
             <h2 style="text-align:center">Login</h2>
             <br>
 
@@ -20,7 +22,8 @@
             </div>
 
             <div class="form-group">
-                <input type="password" name="password" id="password" placeholder=" " class="form-input" required pattern="^\S{4,100}$" title="Password harus 4-10 karakter dan tidak mengandung spasi">
+                <input type="password" name="password" id="password" placeholder=" " class="form-input" required
+                    pattern="^\S{4,100}$" title="Password harus 4-10 karakter dan tidak mengandung spasi">
                 <label for="password" class="floating">Password</label>
             </div>
 
@@ -32,6 +35,68 @@
             </div>
         </form>
     </div>
+
+    <script>
+        // Validasi email automata
+        document.querySelector("form").addEventListener("submit", function(e) {
+            const emailInput = document.getElementById("email").value;
+
+            if (!isValidEmail(emailInput)) {
+                e.preventDefault();
+                alert("Format email tidak valid.");
+            }
+        });
+
+        function isValidEmail(email) {
+            let state = 0;
+
+            for (let i = 0; i < email.length; i++) {
+                const c = email[i];
+
+                switch (state) {
+                    case 0:
+                        if (isAlpha(c)) state = 1;
+                        else return false;
+                        break;
+                    case 1:
+                        if (isAlphaNum(c) || c === '.' || c === '_' || c === '-') state = 1;
+                        else if (c === '@') state = 2;
+                        else return false;
+                        break;
+                    case 2:
+                        if (isAlpha(c)) state = 3;
+                        else return false;
+                        break;
+                    case 3:
+                        if (isAlphaNum(c) || c === '-') state = 3;
+                        else if (c === '.') state = 4;
+                        else return false;
+                        break;
+                    case 4:
+                        if (isAlpha(c)) state = 5;
+                        else return false;
+                        break;
+                    case 5:
+                        if (isAlpha(c)) state = 5;
+                        else return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+
+            return state === 5;
+        }
+
+        function isAlpha(c) {
+            return /^[A-Za-z]$/.test(c);
+        }
+
+        function isAlphaNum(c) {
+            return /^[A-Za-z0-9]$/.test(c);
+        }
+    </script>
+
 </body>
 
 <style>
@@ -44,9 +109,7 @@
         font-family: "Poppins", sans-serif;
     }
 
-
     :root {
-        /* ===== Colors ===== */
         --blue_dark: #1450A0;
         --blue_light: #2878F0;
         --gold: #F0A014;
@@ -160,7 +223,6 @@
     .opsi a {
         text-decoration: none;
         color: var(--gold);
-
     }
 
     option {
